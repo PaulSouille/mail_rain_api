@@ -24,7 +24,7 @@ const server = new Hapi.Server({
 
 const swaggerOptions = {
   info: {
-          title: 'Documentation Mexicain',
+          title: 'Documentation',
           version: Pack.version,
 
 
