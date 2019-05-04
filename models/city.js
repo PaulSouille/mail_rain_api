@@ -1,14 +1,14 @@
 "use strict";
 
 module.exports = function(sequelize,DataType) {
-  var cities = sequelize.define("cities", {
+  var city = sequelize.define("city", {
     id: {type : DataType.DECIMAL,primaryKey : true},
     name: DataType.STRING,
     isActive: DataType.BOOLEAN,
   },
   {
     timestamps: false,
-    tableName: 'cities'
+    tableName: 'city'
   },
   {
     classMethods: {
@@ -16,5 +16,5 @@ module.exports = function(sequelize,DataType) {
       }
     }
   });
-  return cities;
+  return city;
 };

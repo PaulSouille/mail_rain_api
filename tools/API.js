@@ -1,29 +1,46 @@
-error = {};
+result = {};
 
 class Api{
 
 
 	errorParam () {
-        error.code = 422;
-        error.message = "Incorrect parameters";
-        return (JSON.stringify(error));        
+        result.code = 422;
+        result.message = "Incorrect parameters";
+        return (JSON.stringify(result));        
         
     }
     emptyParam(){
-        error.code=422;
-        error.message = "Empty parameters";
-        return (JSON.stringify(error));
+        result.code=422;
+        result.message = "Empty parameters";
+        return (JSON.stringify(result));
     }
     errorProcess(){
-        error.code=500;
-        error.message="Server error"
-        return (JSON.stringify(error));
-
+        result.code=500;
+        result.message="Server result"
+        return (JSON.stringify(result));
     }
-    successInsert(){
-        error.code=201;
-        error.message="Success"
-        return (JSON.stringify(error));
+    errorUpdate(data){
+        result.code=417;
+        result.message="error update."
+        result.data = data;
+        return (JSON.stringify(result));
+    }
+    errorUpdate(){
+        result.code=417;
+        result.message="error update."
+        return (JSON.stringify(result));
+    }
+    successInsert(data){
+        result.code=201;
+        result.message="success"
+        result.data = data;
+        return (JSON.stringify(result));
+    }
+    successUpdate(data){
+        result.code=201;
+        result.message="success"
+        result.data = data;
+        return (JSON.stringify(result));
     }
 };
 module.exports = new Api();

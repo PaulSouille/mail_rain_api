@@ -4,42 +4,42 @@ var Joi = require('joi');
 module.exports = [
   {
     method: 'GET',
-    path: '/cities',
-    handler: controllers.cities.get,
+    path: '/city',
+    handler: controllers.city.get,
     options: {
       cors : true,
-      description: 'Get all cities',
+      description: 'Get all city',
       tags: ['api'], 
     },
   },
   {
     method: 'GET',
-    path: '/cities/{id}',
-    handler: controllers.cities.getOne,
+    path: '/city/{city_id}',
+    handler: controllers.city.getOne,
     options: {
       cors : true,
       description: 'Get a city by id',
       tags: ['api'],
       validate : {
         params: {
-            id : Joi.number().integer()
-                    .required()
-                    .description('The type id'),
+          city_id: Joi.string()
+            .required()
+            .description('The device id'),
         }
       }
     }
   },
   {
     method: 'PATCH',
-    path: '/cities/{id}',
-    handler: controllers.cities.setCity,
+    path: '/city/{city_id}',
+    handler: controllers.city.setCity,
     options: {
       cors : true,
       description: 'Set active city by id',
       tags: ['api'],
       validate : {
         params: {
-            id : Joi.number().integer()
+          city_id : Joi.string()
                     .required()
                     .description('The type id'),
         }
