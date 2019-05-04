@@ -4,14 +4,17 @@
   "description": "Mexicain api build with sequelize, swagger and hapi",
   "main": "server.js",
   "author": "Paul Souillé",
-  "scripts": { "dev" : "node mail_rain_api.js" } ,
+  "scripts": {
+    "dev": "node mail_rain_api.js"
+  },
   "dependencies": {
     "boom": "^5.2.0",
     "config": "^1.29.2",
     "good": "^7.3.0",
     "good-console": "^6.4.1",
     "hapi": "^17.2.0",
-    "hapi-swagger": "^9.3.0",
+    "hapi-auth-bearer-token": "^6.1.1",
+    "hapi-swagger": "^9.4.2",
     "inert": "^5.1.2",
     "joi-route-to-swagger": "^0.4.2",
     "mysql2": "^1.6.4",
@@ -21,7 +24,6 @@
     "vision": "^5.4.4"
   },
   "devDependencies": {
-    "lab": "^14.3.2",
-    "sqlite3": "^3.1.13"
+    "lab": "^14.3.2"
   }
 }

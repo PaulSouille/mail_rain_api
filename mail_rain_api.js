@@ -9,6 +9,8 @@ var routes = require('./routes');
 const Inert = require('inert');
 const Vision = require('vision');
 const HapiSwagger = require('hapi-swagger');
+const AuthBearer = require('hapi-auth-bearer-token');
+
 const Pack = require('./package');
 
 
@@ -52,6 +54,17 @@ internals.main = async () => {
     
   ]);
   await server.register(require('inert'));
+  await server.register(AuthBearer)
+  server.auth.strategy('simple', 'bearer-access-token', {
+    allowQueryToken: true,
+    validate: async (request, token, h) => {
+      const isValid = token === settings.token;
+      const credentials = { token };
+
+      return { isValid, credentials };
+    }
+  });
+  server.auth.default('simple');
 
   await server.start();
   initDb(()=>{
