@@ -4,6 +4,7 @@
   "description": "Mexicain api build with sequelize, swagger and hapi",
   "main": "server.js",
   "author": "Paul Souillé",
+  "scripts": { "dev" : "node mail_rain_api.js" } ,
   "dependencies": {
     "boom": "^5.2.0",
     "config": "^1.29.2",

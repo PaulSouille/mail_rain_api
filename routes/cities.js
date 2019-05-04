@@ -29,4 +29,21 @@ module.exports = [
       }
     }
   },
+  {
+    method: 'PATCH',
+    path: '/cities/{id}',
+    handler: controllers.cities.setCity,
+    options: {
+      cors : true,
+      description: 'Set active city by id',
+      tags: ['api'],
+      validate : {
+        params: {
+            id : Joi.number().integer()
+                    .required()
+                    .description('The type id'),
+        }
+      }
+    }
+  },
 ];

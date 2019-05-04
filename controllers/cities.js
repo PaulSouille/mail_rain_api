@@ -1,17 +1,19 @@
 var models = require('../models');
-
+var db = require('../tools/DataBase');
 module.exports = {
 	get:function (request, reply) {
-        console.log(models.cities.findAll());
 		return models.cities.findAll();
 	},
 	getOne:function (request, reply) {
 		return models.cities.findById(request.params.id);
 	},
-	deleteOne:function(request,reply){
-		return ('delete message, check if api is correct');
-	},
-	askDelete:function(request,reply){
-		return ('set boolean askDelete to 0 if 1 and 1 if 0');
+	setCity:function(request,reply){
+		
+		return db.query('CALL ps_update_cities (:city_id)', 
+        	{replacements: { i_id_cities: request.city_id }}).then(data=>{
+				console.log(data);
+			})
+  		
 	}
+
 };

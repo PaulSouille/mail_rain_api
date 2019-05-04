@@ -21,16 +21,19 @@ const server = new Hapi.Server({
   port: settings.port
 });
 
-
 const swaggerOptions = {
   info: {
-          title: 'Documentation',
-          version: Pack.version,
-
-
-      },
-  };
-
+    title: 'Documentation API',
+    version: Pack.version,
+  },
+  securityDefinitions: {
+    Bearer: {
+      type: 'apiKey',
+      name: 'Authorization',
+      in: 'header'
+    }
+  }
+};
 
 var initDb = function(cb){
   cb();

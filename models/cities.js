@@ -1,7 +1,6 @@
 "use strict";
 
 module.exports = function(sequelize,DataType) {
-    console.log(DataType);
   var cities = sequelize.define("cities", {
     id: {type : DataType.DECIMAL,primaryKey : true},
     name: DataType.STRING,
