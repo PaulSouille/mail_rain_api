@@ -31,8 +31,8 @@ module.exports = [
   },
   {
     method: 'PATCH',
-    path: '/city/{city_id}',
-    handler: controllers.city.setCity,
+    path: '/city/{city_id}/activate',
+    handler: controllers.city.setActiveCity,
     options: {
       cors : true,
       description: 'Set active city by id',

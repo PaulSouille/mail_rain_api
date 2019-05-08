@@ -4,7 +4,6 @@ var Hapi = require('hapi');
 
 var path = require('path');
 var settings = require('config');
-
 var routes = require('./routes');
 const Inert = require('inert');
 const Vision = require('vision');
@@ -19,7 +18,7 @@ const internals = {
 };
 
 const server = new Hapi.Server({
-  host:settings.host,
+  host: settings.host,
   port: settings.port
 });
 
@@ -37,21 +36,19 @@ const swaggerOptions = {
   }
 };
 
-var initDb = function(cb){
+var initDb = function (cb) {
   cb();
 };
-
-
 
 internals.main = async () => {
   await server.register([
     Inert,
     Vision,
     {
-        plugin: HapiSwagger,
-        options: swaggerOptions
+      plugin: HapiSwagger,
+      options: swaggerOptions
     }
-    
+
   ]);
   await server.register(require('inert'));
   await server.register(AuthBearer)
@@ -59,15 +56,19 @@ internals.main = async () => {
     allowQueryToken: true,
     validate: async (request, token, h) => {
       const isValid = token === settings.token;
-      const credentials = { token };
-
-      return { isValid, credentials };
+      const credentials = {
+        token
+      };
+      return {
+        isValid,
+        credentials
+      };
     }
   });
   server.auth.default('simple');
 
   await server.start();
-  initDb(()=>{
+  initDb(() => {
     console.log('Server is running at ' + server.info.uri);
   });
   server.route(routes);
