@@ -28,7 +28,7 @@ module.exports = {
 				  }
 			  }).catch(err=>{
 				  console.log(err);
-				  return(ApiResponse.errorPr<ocess());
+				  return(ApiResponse.errorProcess());
 			  })
 	}
 };
